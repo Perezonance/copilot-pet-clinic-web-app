@@ -1,0 +1,23 @@
+.StatusBadge {
+    padding: 5px 10px;
+    border-radius: 100px;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.StatusBadge.approved {
+    background-color: #007bff; /* Blue */
+}
+
+.StatusBadge.completed {
+    background-color: #28a745; /* Green */
+}
+
+.StatusBadge.cancelled {
+    background-color: #dc3545; /* Red */
+}
+
+.StatusBadge.pending {
+    background-color: #ffc107; /* Yellow */
+}

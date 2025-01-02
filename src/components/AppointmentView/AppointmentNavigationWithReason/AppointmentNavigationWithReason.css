@@ -1,0 +1,11 @@
+.AppointmentNavigationWithReason {
+
+    display: flex; 
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.AppointmentNavigationWithReason span {
+    padding: 5px;
+    font-weight: bold;
+}

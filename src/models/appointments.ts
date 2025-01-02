@@ -86,6 +86,15 @@ export enum AppointmentStatus {
  */
 export interface AppointmentNote extends AuditProperties {
   id: number;
+  index: number;
   appointmentId: number;
+  createdBy: string;
+  createdById: number;
+  modifiedBy?: string;
+  modifiedById?: number;
+  note: string;
+}
+
+export interface AppointmentNoteForm {
   note: string;
 }

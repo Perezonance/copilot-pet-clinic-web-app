@@ -1,23 +1,31 @@
 import ContentPreview from '../ContentPreview/ContentPreview';
 import ContentList from '../ContentList/ContentList';
 import './ContentPane.css';
-import { callAPI } from '../../utils/callAPI';
-import React from 'react';
-// import constructContent from '../../contentConstructor';
+import * as api from '../../utils/callAPI';
+import React, { ReactNode } from 'react';
+import { Appointment } from '../../models/appointments';
+import { AppointmentView } from '../AppointmentView/AppointmentView';
 
 export interface ContentPaneProps {
     showTable: boolean;
     tableData: any[];
-    selectedResource: string;
+    selectedResource: ContentViewThing;
 };
 
-const ContentPane: React.FC<ContentPaneProps> = ({ showTable, tableData, selectedResource }) => {
+export interface ContentViewThing {
+  endpoint: string;
+  contentView: React.FC;
+}
 
-    const [previewContent, setPreviewContent] = React.useState(undefined);
+export const ContentPane: React.FC<ContentPaneProps> = ({ showTable, tableData, selectedResource }) => {
+
+    const [previewContent, setPreviewContent] = React.useState<ReactNode>(undefined);
 
     const handleRowClick = (rowData: any) => {
-        callAPI(selectedResource+'/'+rowData?.id, (data) => {
-            setPreviewContent(data);
+        api.callAPI(api.GET, selectedResource.endpoint+'/'+rowData?.id, (data) => {
+            const appointment: Appointment = data;
+
+            setPreviewContent(<AppointmentView appointment={appointment} />);
         });
 
     };
@@ -33,5 +41,3 @@ const ContentPane: React.FC<ContentPaneProps> = ({ showTable, tableData, selecte
         </div>
     );
 };
-
-export default ContentPane;

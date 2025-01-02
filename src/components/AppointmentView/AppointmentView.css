@@ -1,0 +1,6 @@
+.AppointmentView {
+    position: relative; /* Enable absolute positioning within the AppointmentView component */
+    border: 2px solid #000000; /* Adds a thin border with a light gray color */
+    padding: 10px; /* Optional: Adds some padding inside the border */
+    border-radius: 4px; /* Optional: Adds slightly rounded corners */
+}

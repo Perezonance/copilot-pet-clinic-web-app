@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Table.css';
 
 interface TableProps {
@@ -7,8 +7,19 @@ interface TableProps {
 }
 
 const Table: React.FC<TableProps> = ({ data, onRowClick }) => {
+  const [selectedRowIndex, setSelectedRowIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    setSelectedRowIndex(null);
+  }, [data]);
+
   if (data.length === 0) {
     return <p>No data available</p>;
+  }
+
+  const handleRowClick = (row: any, index: number) => {
+    setSelectedRowIndex(index);
+    onRowClick(row);
   }
 
   const headers = Object.keys(data[0]);
@@ -24,7 +35,10 @@ const Table: React.FC<TableProps> = ({ data, onRowClick }) => {
       </thead>
       <tbody>
         {data.map((row, index) => (
-          <tr key={index} onClick={ () => onRowClick(row)}>
+          <tr 
+            key={index} 
+            className={selectedRowIndex === index ? 'selected' : ''}
+            onClick={ () => handleRowClick(row, index)}>
             {headers.map((header) => (
               <td key={header}>{row[header]}</td>
             ))}

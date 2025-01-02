@@ -1,0 +1,54 @@
+.Note {
+    position: relative;
+    padding: 10px;
+    border-radius: 4px;
+    min-height: 100px;
+    max-height: 300px;
+    margin-bottom: 10px;
+    background-color: #9297fc;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+.edit-note-button {
+    position: relative;
+    top: 5px;
+    right: 5px;
+    display: none;
+}
+
+.edit-button-container {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    margin-bottom: 50px;
+}
+.Note p {
+    margin: 35px;
+    font-size: 1.15rem;
+}
+
+
+.edit-controls {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.Note:hover .edit-note-button {
+    display: block;
+    position: absolute;
+    margin: 5px;
+}
+
+.Note textarea {
+    position: relative;
+    background-color: #aaaeff;
+    resize: none;
+    width: 97%;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    padding: 10px;
+    font-size: 1.15rem;
+    overflow: hidden;
+}

@@ -1,4 +1,4 @@
-import { callAPI } from "../../utils/callAPI";
+import * as api from "../../utils/callAPI";
 import { Veterinarian } from "../../models/veterinarian";
 
 export async function getVeterinarianById(
@@ -6,7 +6,7 @@ export async function getVeterinarianById(
 ): Promise<Veterinarian | undefined> {
   let vet: Veterinarian | undefined = undefined;
   try {
-    await callAPI(`/api/v1/veterinarians/${vetId}`, (data) => {
+    await api.callAPI(api.GET, `/api/v1/veterinarians/${vetId}`, (data) => {
       vet = data;
     });
   } catch (error) {

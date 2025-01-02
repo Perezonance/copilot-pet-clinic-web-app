@@ -1,0 +1,18 @@
+.AppointmentHeader {
+    display: flex;
+    align-items: center; /* Center items vertically */;
+    /* border: 2px solid #82084b;
+    border-radius: 4px; */
+    padding: 10px; /* Optional: Add some padding */
+}
+
+.ProfileImageWithStatus {
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    width: 250px;
+    height: 325px;
+}
+
+.AppointmentNavigationWithReason {
+    flex-grow: 1; /* Allow the navigation component to grow and take up available space */
+    align-self: flex-end;
+}

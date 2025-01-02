@@ -3,13 +3,24 @@ export const VETERINARIANS = v1Prefix + "/veterinarians";
 export const PETS = v1Prefix + "/pets";
 export const APPOINTMENTS = v1Prefix + "/appointments";
 
-export async function callAPI(endpoint: string, handler: (data: any) => void) {
+export const GET = "GET";
+export const POST = "POST";
+export const PATCH = "PATCH";
+export const DELETE = "DELETE";
+
+export async function callAPI(
+  method: string,
+  endpoint: string,
+  handler: (data: any) => void,
+  reqBody?: string
+) {
   try {
     const response = await fetch(`http://localhost:3001${endpoint}`, {
-      method: "GET",
+      method: method,
       headers: {
         "Content-Type": "application/json",
       },
+      body: reqBody,
       mode: "cors",
     });
     if (response.status === 200) {

@@ -1,10 +1,54 @@
 .Notes {
     position: relative;
-    padding: 20px;
+    padding: 10px;
+    /* border: 2px solid #0d851b;
+    border-radius: 4px; */
+}
+
+.Header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NewNote {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #9297fc;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
 }
 
 .edit-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
+}
+
+.NoteList {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.NoteList::-webkit-scrollbar {
+    width: 10px;
+}
+
+.NoteList::-webkit-scrollbar-thumb {
+    background-color: #7578c4;
+    border-radius: 10px;
+}
+
+.NoteList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+h1 {
+    color: #383838;
 }

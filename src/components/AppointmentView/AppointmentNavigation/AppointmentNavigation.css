@@ -1,0 +1,31 @@
+.AppointmentNavigation {
+    background-color: rgb(154, 109, 159);
+}
+
+.AppointmentNavigation nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.AppointmentNavigation ul {
+    display: flex;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.AppointmentNavigation li {
+    flex: 1;
+    float: left;
+    display: flex;
+    border: 1px solid rgb(115, 70, 120);
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.AppointmentNavigation li:hover {
+    background-color: rgb(115, 70, 120);
+}

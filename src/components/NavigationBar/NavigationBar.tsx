@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavigationBar.css';
-import { callAPI } from '../../utils/callAPI';
+import * as api from '../../utils/callAPI';
 
 interface NavigationBarProps {
     onClick: (endpoint: string, data: any) => void;
@@ -15,7 +15,7 @@ export const NAV_APPTS = v1Prefix+'/appointments';
 
 export const NavigationBar: React.FC<NavigationBarProps> = ({ onClick}) => {
     const navToVets = async (endpoint: string) => {
-        callAPI(endpoint, (data) => {
+        api.callAPI(api.GET, endpoint, (data) => {
             onClick(endpoint, data);
         });
     }
@@ -31,13 +31,13 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ onClick}) => {
     };
 
     const navToPets = async (endpoint: string) => {
-        callAPI(endpoint, (data) => {
+        api.callAPI(api.GET, endpoint, (data) => {
             onClick(endpoint, data);
         });
     };
 
     const navToAppts = async (endpoint: string) => {
-        callAPI(endpoint, (data) => {
+        api.callAPI(api.GET, endpoint, (data) => {
             onClick(endpoint, data);
         });
     };
