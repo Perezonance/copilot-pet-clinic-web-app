@@ -11,8 +11,8 @@ interface NotesProps {
 }
 
 export const Notes: React.FC<NotesProps> = ({ appointmentId, notes }) => {
-  const [editNewNoteMode, setEditNewNoteMode] = useState(false);
-  const [newNoteContent, setNewNoteContent] = useState('');
+  const [editNewNoteMode, setEditNewNoteMode] = useState<boolean>(false);
+  const [newNoteContent, setNewNoteContent] = useState<string>('');
   const [noteList, setNoteList] = useState<AppointmentNote[]>(notes || []);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ export const Notes: React.FC<NotesProps> = ({ appointmentId, notes }) => {
   }
 
   const handleDiscardNote = () => {
+    setNewNoteContent('');
     setEditNewNoteMode(false);
   }
 

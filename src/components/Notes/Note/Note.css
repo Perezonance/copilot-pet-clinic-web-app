@@ -10,10 +10,7 @@
 }
 
 .edit-note-button {
-    position: relative;
-    top: 5px;
-    right: 5px;
-    display: none;
+    display: none !important;
 }
 
 .edit-button-container {
@@ -35,8 +32,10 @@
 }
 
 .Note:hover .edit-note-button {
-    display: block;
+    display: inline-block !important;
     position: absolute;
+    top: 5px;
+    right: 5px;
     margin: 5px;
 }
 

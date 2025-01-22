@@ -12,14 +12,16 @@ export interface NoteProps {
 
 export const Note: React.FC<NoteProps> = ({ note, appointmentId }) => {
     const [isEditing, setIsEditing] = React.useState<boolean>(false);
-    const [noteContent, setNoteContent] = React.useState<string>(note.note);
+    const [noteContent, setNoteContent] = React.useState<string>("");
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     const handleEditButtonClick = () => {
+        setNoteContent(note.note);
         setIsEditing(true);
     };
 
     const handleDiscardButtonClick = () => {
+        setNoteContent("");
         setIsEditing(false);
     };
 
