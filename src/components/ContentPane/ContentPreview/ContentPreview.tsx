@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AppointmentView } from "../AppointmentView/AppointmentView";
+import { AppointmentView } from "../../AppointmentView/AppointmentView";
 
 export interface ContentPreviewProps {
     content: any;

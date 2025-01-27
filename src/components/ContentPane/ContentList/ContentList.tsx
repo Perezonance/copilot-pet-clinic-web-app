@@ -1,4 +1,4 @@
-import Table from '../Table/Table';
+import Table from '../../Table/Table';
 import './ContentList.css';
 
 interface ContentListProps {

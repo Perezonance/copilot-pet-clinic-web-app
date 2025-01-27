@@ -1,5 +1,5 @@
-import ContentPreview from '../ContentPreview/ContentPreview';
-import ContentList from '../ContentList/ContentList';
+import ContentPreview from '../ContentPane/ContentPreview/ContentPreview';
+import ContentList from '../ContentPane/ContentList/ContentList';
 import './ContentPane.css';
 import * as api from '../../utils/callAPI';
 import React, { ReactNode } from 'react';
