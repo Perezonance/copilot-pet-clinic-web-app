@@ -11,6 +11,7 @@ const defaultAvatarURL = '/default-avatar.jpg';
 
 export const ProfileImage: React.FC<ProfileImageWithProps> = ({ imageURL }) => {
     const [displayUploadImageModal, setDisplayUploadImageModal] = useState<boolean>(false);
+    const [selectedImage, setSelectedImage] = useState<string | ArrayBuffer | null>(null);
 
     const handleEditProfileImageButton = () => {
         setDisplayUploadImageModal(true);
@@ -18,6 +19,18 @@ export const ProfileImage: React.FC<ProfileImageWithProps> = ({ imageURL }) => {
 
     const handleCloseUploadImageModal = () => {
         setDisplayUploadImageModal(false);
+        setSelectedImage(null);
+    };
+
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file: File | undefined = event.target.files?.[0];
+        if (file) {
+            const reader: FileReader =  new FileReader();
+            reader.onloadend = () => {
+                setSelectedImage(reader.result);
+            };
+            reader.readAsDataURL(file)
+        }
     };
 
     return (
@@ -35,6 +48,8 @@ export const ProfileImage: React.FC<ProfileImageWithProps> = ({ imageURL }) => {
                 <DialogTitle>Upload Profile Image</DialogTitle>
                 <DialogContent>
                     <p>Profile image editing content goes here...</p>
+                    <input type="file" accept="image/*" onChange={handleImageChange} />
+                    {selectedImage && <img src={selectedImage as string} alt="Selected" style={{width: '100%', marginTop: '10px'}} />}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleCloseUploadImageModal}>Cancel</Button>
