@@ -1,0 +1,23 @@
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-image {
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.edit-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+}
+
+.profile-image-container:hover .edit-button {
+    display: inline-block !important;
+}
