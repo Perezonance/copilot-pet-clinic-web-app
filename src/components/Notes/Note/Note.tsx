@@ -12,11 +12,12 @@ export interface NoteProps {
 
 export const Note: React.FC<NoteProps> = ({ note, appointmentId }) => {
     const [isEditing, setIsEditing] = React.useState<boolean>(false);
-    const [noteContent, setNoteContent] = React.useState<string>("");
+    const [noteContent, setNoteContent] = React.useState<string>(note.note);
+    const [currentNote, setCurrentNote] = React.useState<string>(note.note);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     const handleEditButtonClick = () => {
-        setNoteContent(note.note);
+        setNoteContent(currentNote);
         setIsEditing(true);
     };
 
@@ -28,11 +29,18 @@ export const Note: React.FC<NoteProps> = ({ note, appointmentId }) => {
     const handleSaveButtonClick = async () => {
         setIsEditing(false);
         try {
-            await UpdateNote(appointmentId, note.index, { note: noteContent });
+            const appointment = await UpdateNote(appointmentId, note.index, { note: noteContent });
+            if (appointment && appointment.notes) {
+                setCurrentNote(appointment.notes[0].note);
+            }
         } catch (error) {
             console.error(`Failed to save note: ${error}`);
         }
     };
+
+    useEffect(() => {
+        setCurrentNote(currentNote);
+      }, [note.note]);
 
     const handleTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setNoteContent(event.target.value);
@@ -77,7 +85,7 @@ export const Note: React.FC<NoteProps> = ({ note, appointmentId }) => {
                     >
                         Edit
                     </Button>
-                    <p>{note.note}</p>
+                    <p>{currentNote}</p>
                     <NoteAudit note={note} />
                 </>
             )}
