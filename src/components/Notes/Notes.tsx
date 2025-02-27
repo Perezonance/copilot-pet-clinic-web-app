@@ -30,6 +30,7 @@ export const Notes: React.FC<NotesProps> = ({ appointmentId, notes }) => {
 
   const handleSaveNote = async () => {
     setEditNewNoteMode(false);
+    setNewNoteContent('');
     try {
       const appointment: Appointment | undefined = await AddNewNote(appointmentId, { note: newNoteContent });
       if (appointment && appointment.notes) {
